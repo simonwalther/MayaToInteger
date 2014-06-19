@@ -2,7 +2,6 @@ module MayaToInteger
   def maya_to_integer(number)
     result = ""
     @converter ||= Converter.new
-    @converter.verify(number)
     @converter.convert(number)
   end
 end
@@ -48,9 +47,5 @@ class Converter
     result += (floor_value*(20**floor))
 
     return result
-  end
-
-  def verify(number)
-
   end
 end

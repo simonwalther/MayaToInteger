@@ -28,9 +28,15 @@ describe MayaToInteger do
       result = subject.maya_to_integer("o\n\no\n-----\n-----\n")
       expect(result).to eq(31)
     end
-  end
 
-  describe '#verify' do
+    it 'should be able to calcul big number' do
+      result = subject.maya_to_integer("oo\n\noooo\n-----\n\no\n-----\n\noooo\n-----\n-----")
+      expect(result).to eq(19734)
+    end
 
+    it 'should be able to manage 0 (as <(((>)' do
+      result = subject.maya_to_integer("o\n\n<(((>\n\n<(((>")
+      expect(result).to eq(400)
+    end
   end
 end
