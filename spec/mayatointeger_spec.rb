@@ -38,5 +38,10 @@ describe MayaToInteger do
       result = subject.maya_to_integer("o\n\n<(((>\n\n<(((>")
       expect(result).to eq(400)
     end
+
+    it 'should be able to distinguish bar by \n' do
+      result = subject.maya_to_integer("\n---\n--")
+      expect(result).to eq(10)
+    end
   end
 end

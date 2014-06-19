@@ -9,6 +9,17 @@ end
 class Converter
 
   def convert(number)
+    #### this method has for goal to convert maya numbers to integer ###
+    # analyze of '-':
+    # all 5 first '-' has a value of 5 for its floor
+    # all first '-' after \n has a value of 5 for its floor
+    # analyze of 'o':
+    # all 'o' has a value of 1 for its floor
+    # analyze of '<(((>':
+    # all '<(((>' are ignored and has a value of zero by the way
+    # analyze of '\n\n':
+    # it had 1 to the floor counter to be able to calculate the real value of the floor
+
     result = 0
     bar_count = 0
     endl_count = 0
@@ -18,6 +29,7 @@ class Converter
 
     number.each do |char|
       if char == "\n"
+        bar_count = 0
         endl_count += 1
 
         if endl_count == 2
